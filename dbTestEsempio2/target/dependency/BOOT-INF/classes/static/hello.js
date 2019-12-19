@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajax({
-        url: "http://localhost:8080/demo/all"
-        crossDomain: true
+        url: "http://localhost:8080/demo/all",
+        crossDomain: true,
         crossOrigin: true
     }).then(function(data) {
     	console.log(data);
