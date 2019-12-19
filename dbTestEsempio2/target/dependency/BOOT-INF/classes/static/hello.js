@@ -2,7 +2,7 @@ $(document).ready(function() {
     $.ajax({
         url: "http://localhost:8080/demo/all",
         jsonp: "$jsonp",
-        dataType: "jsonp
+        dataType: "jsonp"
     }).then(function(data) {
     	console.log(data);
     	for(var i = 0; i < data.length; i++) {
