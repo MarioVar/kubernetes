@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $.ajax({
+    	type : 'POST',
         url: "http://localhost:8080/demo/all",
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
