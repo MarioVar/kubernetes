@@ -1,6 +1,8 @@
 $(document).ready(function() {
     $.ajax({
-        url: "http://web-service:30200/demo/all"
+        url: "http://localhost:8080/demo/all"
+        crossDomain: true
+        crossOrigin: true
     }).then(function(data) {
     	console.log(data);
     	for(var i = 0; i < data.length; i++) {
