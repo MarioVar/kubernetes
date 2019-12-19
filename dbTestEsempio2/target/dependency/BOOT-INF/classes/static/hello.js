@@ -1,8 +1,9 @@
 $(document).ready(function() {
     $.ajax({
         url: "http://localhost:8080/demo/all",
-        jsonp: "$jsonp",
-        dataType: "jsonp"
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        crossDomain : true
     }).then(function(data) {
     	console.log(data);
     	for(var i = 0; i < data.length; i++) {
