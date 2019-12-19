@@ -1,0 +1,14 @@
+download docker desktop exe 
+
+ git clone https://github.com/docker/doodle.git
+
+ cd doodle\cheers2019 ; docker build -t mariovar/cheers2019 .
+
+ docker run -it --rm mariovar/cheers2019
+
+
+
+---
+Once you're ready to share your container with the world, push the image that describes it to Docker Hub.
+
+docker login ; docker push mariovar/cheers2019

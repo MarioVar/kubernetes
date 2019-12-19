@@ -1,0 +1,15 @@
+secretGenerator:
+- name: mysql-pass
+  literals:
+  - password=ThePassword
+- name: mysql-root-pass
+  literals:
+  - password=Secret
+- name: spring-pass
+  literals:
+  - password=ThePassword
+resources:
+  - dbtest-deploymentAndSvc.yaml
+  - spring-test-DeploymentAndService.yaml
+  
+  

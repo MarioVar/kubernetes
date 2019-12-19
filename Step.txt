@@ -1,0 +1,21 @@
+#akstest94466 è il nome dell'acr creata in cui è stato fatto il login 
+
+docker build -t firstapp .
+
+docker run -p 8000:8000 --name MyFirstApp firstapp 
+
+
+az acr list --resource-group cloud-shell-storage-eastus
+ --query "[].{arcLoginServer:loginServer}" --output tsv
+
+
+|output>  akstest94466.azurecr.io
+
+
+
+docker tag firstapp akstest94466.azurecr.io/firstapp:latest
+
+docker push  akstest94466.azurecr.io/firstapp:latest
+
+
+#Per fare in modo che AKS cluster possa prelevare dal registry:

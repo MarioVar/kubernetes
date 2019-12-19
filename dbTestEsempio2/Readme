@@ -1,0 +1,22 @@
+Passo 1:
+	Creata l'applicazione spring che si interfaccia con il db mysql, l'app presuppone che ci sia un db mysql (dettagli nel file di property)
+Passo 2:
+    Creata immagine docker dell'applicazione:
+		docker container build -t mariovar/cheers2019 .
+		docker push mariovar/cheers2019
+Passo 3:
+	Creato docker compose file, contentente il container creato e l'immagine mysql (due container in totale), creato inoltre il file .env per
+	non cablare nel dockerfile le informazioni di configurazione (ad esempio l'indirizzo ip del database, username e password)
+	
+	
+	
+Note sull'applicazione:
+	in C:\Users\mvarlese\Desktop\Installazione azure cli\DockerTest\dbTestEsempio2 eseguire: docker-compose up (-d eventualmente)
+
+	http://localhost:8080/index.html (get all users)
+	
+	
+	Per inserire utenti e vederli nella pagina sopra citata: (in powershell)
+	$postParams = @{name='mao';email='XXqwerty@test.dot'}
+	Invoke-WebRequest -Uri http://localhost:8080/demo/add -Method POST -Body $postParams
+	

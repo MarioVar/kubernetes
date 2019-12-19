@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+  labels:
+    run: web-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    app: springBoot
+    
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: springBoot
+  name: spring-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+        app: springBoot
+
+  template:
+    metadata:
+      labels:
+        app: springBoot
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_HOST
+          value: mysql-service
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: spring-pass
+              key: password
+#          value: ThePassword
+        - name: SPRING_DATASOURCE_USERNAME
+          value: springuser
+        image: index.docker.io/mariovar/cheers2019:latest
+        name: myfirst-spring-app
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+
