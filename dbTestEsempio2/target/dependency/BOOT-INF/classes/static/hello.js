@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        url: "http://10.0.2.15:30200/demo/all"
+        url: "http://10.0.2.15:31058/demo/all"
     }).then(function(data) {
     	console.log(data);
     	for(var i = 0; i < data.length; i++) {
