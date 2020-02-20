@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+  labels:
+    run: web-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8086
+    protocol: TCP
+  selector:
+    app: springBoot
+    
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: springBoot
+  name: spring-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+        app: springBoot
+
+  template:
+    metadata:
+      labels:
+        app: springBoot
+    spec:
+      containers:
+      - env:
+        - name: MY_HOST
+          value: web-service
+        - name: MY_HOST_PORT
+          value: "30200"
+        - name: MYSQL_HOST
+          #value: mysql-service
+          value: 192.168.15.70
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: user_password
+#          valueFrom:
+#            secretKeyRef:
+#              name: mysql-secrets
+#              key: mysql-rootpass
+        - name: SPRING_DATASOURCE_USERNAME
+          value: newuser
+          
+
+        image: mariovarlese3/my-first-repo:v5
+        imagePullPolicy: Always
+        name: myfirst-spring-app
+        ports:
+        - containerPort: 8086
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+

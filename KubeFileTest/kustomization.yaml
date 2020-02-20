@@ -1,0 +1,14 @@
+secretGenerator:
+- name: mysql-pass
+  literals:
+  - password=ThePassword
+- name: mysql-new-root-pass
+  literals:
+  - password=@SpecialSecret
+- name: spring-pass
+  literals:
+  - password=ThePassword
+resources:
+  - mysql.yaml
+  - spring-kube.yaml
+
